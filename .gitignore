@@ -1,0 +1,12 @@
+# global
+node_modules
+*.py
+*.pdf
+package-lock.json
+*.txt
+__pycache__
+
+# workshop 2
+workshop2/*.md
+workshop2/*.txt
+workshop2/*.json

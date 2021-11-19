@@ -1,0 +1,17 @@
+{
+  "name": "workshop3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start1": "node work1.js",
+    "start2": "node work2.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "Konkamon Sion",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.0.1"
+  }
+}
