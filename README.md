@@ -18,8 +18,6 @@ Table Of Contents
 Repo นี้มีไว้รวบรวมชิ้นงาน วิชา **30204-2303 การพัฒนาโปรแกรมบนอุปกรณ์เคลื่อนที่แบบพกพา** ของนาย กรกมล ศรีอ่อน
 (อาจจะมีงานคู่/งานกลุ่มบ้าง)  
 
-[![GitHub latest commit](https://badgen.net/github/last-commit/BigzaaGamer/mobileApp_development-hvc2/main)](https://GitHub.com/BigzaaGamer/konkamonBot-discord/commit/)  
-
 ---
 
 # เกี่ยวกับวิชา
