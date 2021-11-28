@@ -34,6 +34,7 @@ Node.js เป็นหลัก
     * ติดตั้ง Modules โดยใช้ npm
     * Export Class จาก Modules
 * ใช้ [express.js](https://expressjs.com/) ([npmjs.org](https://www.npmjs.com/package/express)) ในการเปิด server
+* ใช้ Module ที่มาพร้อมกับ Node.js (`http`)
 
 ---
 
@@ -43,6 +44,7 @@ Node.js เป็นหลัก
 * [ชิ้นงานที่ 2](/workshop2)
 * [ชิ้นงานที่ 3](/workshop3)
 * [ชิ้นงานที่ 4](/workshop4)
+* [ชิ้นงานที่ 5](/workshop5-chapter3)
 
 ---
 
