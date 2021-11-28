@@ -1,10 +1,13 @@
-# global
+﻿# global
 node_modules
 *.py
 *.pdf
 package-lock.json
 *.txt
 __pycache__
+*.png
+*.jpg
+*.jpeg
 
 # workshop 2
 workshop2/*.md
