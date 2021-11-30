@@ -1,8 +1,8 @@
 const express = require('express');
 const app = express();
 const members = [
-    {id:1,name:"Konkamon Sion", nickname:"Big"},
-    {id:2,name:"Bruh Bruh", nickname:"Bruh"} // เปลี่ยนเป็นชื่อสมาชิก
+    {id:1,name:"สมาชิกคนที่ 1"},
+    {id:2,name:"สมาชิกคนที่ 2"}
 ];
 app.get('/api/members', function(req, res){
     res.send(members);
