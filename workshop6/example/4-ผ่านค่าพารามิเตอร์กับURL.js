@@ -14,7 +14,7 @@ const schools = {
 };
 app.get('/api/:school', function(req, res){
     const school = req.params.school.toLowerCase();
-    if(school == 'taweethapisek'){
+    if(school == 'vocational_college'){
         res.send(members1);
     } else if(school == 'suankularb'){
         res.send(members2);
