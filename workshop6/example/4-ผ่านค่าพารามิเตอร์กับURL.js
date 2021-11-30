@@ -1,7 +1,7 @@
 const express = require('express');
 const app = express();
 const members1 = [
-    {id:1, name:"Konkamon Sion"},
+    {id:1, name:"Name 1"},
     {id:2, name:"Name 2"}
 ];
 const members2 = [
@@ -9,8 +9,8 @@ const members2 = [
     {id:2, name:"Name 4"}
 ];
 const schools = {
-    'taweethapisek': members1, // อย่าลืมเปลี่ยน! ลบ comment ด้วย
-    'suankularb': members2// อย่าลืมเปลี่ยน! ลบ comment ด้วย
+    'vocational_college': members1,
+    'suankularb': members2
 };
 app.get('/api/:school', function(req, res){
     const school = req.params.school.toLowerCase();
