@@ -33,7 +33,12 @@ Node.js เป็นหลัก
 * แนะนำ/การติดตั้ง/Export/Import Modules
     * ติดตั้ง Modules โดยใช้ npm
     * Export Class จาก Modules
-* ใช้ [express.js](https://expressjs.com/) ([npmjs.org](https://www.npmjs.com/package/express)) ในการเปิด server
+* ใช้ [express.js](https://expressjs.com/) ([npmjs.org](https://www.npmjs.com/package/express)) ในการเปิด server และอื่นๆ
+    * กำหนด Endpoint เพิ่ม
+    * เปลี่ยน Port ใน Process
+    * ส่งค่า Param พร้อมกับ HTTP Request
+    * ส่งค่า Param หลายค่า
+    * ผ่านค่า Param ไปกับ URL
 * ใช้ Module ที่มาพร้อมกับ Node.js (`http`)
 
 ---
@@ -45,6 +50,7 @@ Node.js เป็นหลัก
 * [ชิ้นงานที่ 3](/workshop3)
 * [ชิ้นงานที่ 4](/workshop4)
 * [ชิ้นงานที่ 5](/workshop5-chapter3)
+* [ชิ้นงานที่ 6](/workshop6)
 
 ---
 
