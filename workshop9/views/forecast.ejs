@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="th" class="has-background-black-ter">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/root.css" />
+    <link rel="stylesheet" type="text/css" href="../css/forecast.css" />
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="/bs.js"></script>
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="loading"></div>
+    <nav class="navbar has-background-black-ter">
+        <div class="navbar-brand">
+            <p class="navbar-item has-text-light">KONKAMON SION
+            </p>
+        </div>
+        <div class="navbar-start">
+            <div class="navbar-item has-text-light">
+                <div>
+                    <p id="workshopName"><strong class="has-text-white">Workshop 9</strong> -
+                        แอปพลิเคชันพยากรณ์อากาศ
+                    </p>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-fullheight-with-navbar" id="header2">
+        <div class="hero-body is-flex-direction-column is-justify-content-center">
+            <p class="title has-text-light" style="font-weight: 900;">
+                พยากรณ์อากาศวันนี้
+            </p>
+            <p class="subtitle has-text-light"><%= forcastObj.name %></p>
+            <div class="tile is-ancestor">
+                <div class="tile is-parent is-align-items-center">
+                    <div class="tile is-child box has-background-black-ter is-5 has-text-light slide-in-bottom">
+                        <img class="img-thumbnail"
+                            src="http://openweathermap.org/img/wn/<%= forcastObj.weather[0].icon %>@2x.png"
+                            data-code="<%= forcastObj.weather[0].icon %>" alt="icon">
+                        <div class="has-text-light">
+                            <div>สภาพอากาศ: <%= forcastObj.weather[0].description %>
+                            </div>
+                            <div class="ml-3">อุณหภูมิ: <%= forcastObj.main.temp %> °C
+                            </div>
+                            <div class="ml-3">รู้สึกจริง: <%= forcastObj.main.feels_like %> °C
+                            </div>
+                            <div class="ml-3">ความชื้น: <%= forcastObj.main.humidity %> %
+                            </div>
+                        </div>
+                    </div>
+                    <div class="tile is-child box has-background-black-ter is-8 has-text-light slide-in-bottom">
+                        <nav class="level">
+                            <div class="level-item has-text-centered has-text-light">
+                                <div>
+                                    <!-- <strong class="has-text-light"><%= new Date(forcastObj.sys.sunrise).toLocaleTimeString("th-TH"); %></strong> -->
+                                    <strong class="has-text-light" id="sunriseTime"
+                                        data-longdate="<%= new Date(forcastObj.sys.sunrise); %>"></strong></strong>
+                                    <p>พระอาทิตย์ขึ้น</p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered has-text-light">
+                                <div>
+                                    <!-- <strong class="has-text-light"><%= new Date(forcastObj.sys.sunset).toLocaleTimeString("th-TH"); %></strong> -->
+                                    <strong class="has-text-light" id="sunsetTime"
+                                        data-longdate="<%= new Date(forcastObj.sys.sunset); %>"></strong></strong>
+                                    <p>พระอาทิตย์ตก</p>
+                                </div>
+                            </div>
+                        </nav>
+                        <nav class="level">
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <strong class="has-text-light"><%= forcastObj.main.temp_min %></strong>
+                                    <p>อุณหภูมิต่ำสุด</p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <strong class="has-text-light"><%= forcastObj.main.temp_max %></strong>
+                                    <p>อุณหภูมิสูงสุด</p>
+                                </div>
+                            </div>
+                        </nav>
+                        <nav class="level">
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <strong class="has-text-light"><%= forcastObj.main.pressure %></strong>
+                                    <p>ความกดอากาศ</p>
+                                </div>
+                            </div>
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <strong class="has-text-light"><%= forcastObj.main.humidity %> %</strong>
+                                    <p>ความชื้น</p>
+                                </div>
+                            </div>
+                        </nav>
+                        <nav class="level">
+                            <div class="level-item has-text-centered">
+                                <div>
+                                    <strong class="has-text-light"><%= forcastObj.wind.speed %> กม./ชม.</strong>
+                                    <p>ความเร็วลม</p>
+                                </div>
+                            </div>
+                        </nav>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script>
+        var sunriseTime = new Date($("#sunriseTime").data("longdate"));
+        var sunsetTime = new Date($("#sunsetTime").data("longdate"));
+        srH = sunriseTime.getHours();
+        srM = sunriseTime.getMinutes();
+
+        ssH = sunsetTime.getHours();
+        ssM = sunsetTime.getMinutes();
+
+        $("#sunriseTime").html(srH + ":" + srM);
+        $("#sunsetTime").html(ssH + ":" + ssM);
+
+
+        $(document).ready(function () {
+            //alert($(".img-thumbnail").data("code"));
+            weatherCode = $(".img-thumbnail").data("code");
+            if (weatherCode == "01d" || weatherCode == "01n") {
+                $("#header2").css("background-image",
+                    "url('https://www.bovill.com/wp-content/uploads/2020/10/Persistent-myths-of-blue-sky-compliance-scaled-1.jpg')"
+                );
+            } else if (weatherCode == "04d" || weatherCode == "04n") {
+                $("#header2").css("background-image",
+                    "url('https://www.openfootage.net/wp-content/uploads/2014/09/OpenfootageNET_00181_overcast_1080p.0001.jpg')"
+                );
+            } else if (weatherCode == "09d" || weatherCode == "09n") {
+                $("#header2").css("background-image",
+                    "url('https://ewscripps.brightspotcdn.com/5b/81/93a9dbef46b68e32ecf7683777a6/gettyimages-1024253804.jpg')"
+                );
+            } else if (weatherCode == "10d" || weatherCode == "10n") {
+                $("#header2").css("background-image",
+                    "url('https://www.thenewsminute.com/sites/default/files/styles/news_detail/public/chennai%20rains_3x2.jpg?itok=mZwjXGzc')"
+                );
+            } else if (weatherCode == "03d" || weatherCode == "03n") {
+                $("#header2").css("background-image",
+                    "url('https://live.staticflickr.com/2106/1909487867_de140c7eb8_b.jpg')");
+            } else if (weatherCode == "02d" || weatherCode == "02n") {
+                $("#header2").css("background-image",
+                    "url('https://airstudiopaducah.files.wordpress.com/2013/07/bright-blue-sky-with-a-few-tiny-white-clouds-e1380556952793.jpg')"
+                );
+            } else if (weatherCode == "11d" || weatherCode == "11n") {
+                $("#header2").css("background-image",
+                    "url('https://s7d2.scene7.com/is/image/TWCNews/lightning_jpg-12')");
+            } else {
+                return;
+            }
+        });
+
+        $(window).on("load", function () {
+            $(".loading").hide();
+        });
+    </script>
+</body>
+
+</html>
