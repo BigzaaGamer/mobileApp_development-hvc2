@@ -1,0 +1,30 @@
+{
+  "name": "workspace",
+  "version": "1.0.0",
+  "description": "Table Of Contents\r ===",
+  "main": "main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/BigzaaGamer/mobileApp_development-hvc2.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/BigzaaGamer/mobileApp_development-hvc2/issues"
+  },
+  "homepage": "https://github.com/BigzaaGamer/mobileApp_development-hvc2#readme",
+  "dependencies": {
+    "axios": "^0.24.0",
+    "ejs": "^3.1.6",
+    "express": "^4.17.1"
+  },
+  "engines":{
+    "node": "16.13.1",
+    "npm": "8.1.2"
+  }
+}
