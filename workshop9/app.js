@@ -7,7 +7,7 @@ app.set('view engine', 'ejs');
 app.set('views', 'views');
 app.use(express.json());
 app.use(express.static(__dirname + '/'));
-app.get('/workshop9', function (req, res) {
+app.get('/', function (req, res) {
     fs.readFile('./th-city.json', (err, data) => {
         const listObj = JSON.parse(data);
         if (err) {
