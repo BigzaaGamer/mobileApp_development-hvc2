@@ -1,0 +1,12 @@
+.hero#header2 {
+  background-image: unset;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+}
+
+.hero#header2 .hero-body {
+  background-color: #000000aa;
+}
+
+/*# sourceMappingURL=forecast.css.map */

@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/alertify.min.js"></script>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/npm/alertifyjs@1.13.1/build/css/alertify.min.css" />
+    <title>Workshop 8 - Template Engine</title>
+    <style>
+		@import url('https://fonts.googleapis.com/css2?family=Athiti:wght@200;300;400;500;600;700&display=swap');
+		@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&display=swap');
+        body {font-family: "Athiti";height: 100vh;}
+        .ajs-success {/*background-color: hsl(199, 53%, 53%) !important;*/color: #fafafa;font-weight: 600;}
+        footer {position: fixed;left: 0;bottom: 0;width: 100%;padding: 1em !important}
+        select {font-family: Athiti;}
+        *,*::before,*::after {user-select: none;}
+    </style>
+</head>
+
+<body>
+    <nav class="navbar" role="navigation" aria-label="main navigation">
+        <div class="navbar-brand">
+            <p class="navbar-item" style="letter-spacing: 2px;font-family: 'Montserrat';font-weight: 700;">KONKAMON SION
+            </p>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <div class="buttons">
+                    <a href="https://github.com/BigzaaGamer/mobileapp_development_hvc2" target="_blank"
+                        class="button is-light">
+                        <strong>See in GitHub</strong>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero is-info">
+        <div class="hero-body">
+            <div class="">
+                <p class="title">
+                    Workshop 8 - วิธีใช้งาน Template Engine
+                </p>
+                <p class="subtitle">
+                    วิชา 30204-2303
+                    การพัฒนาโปรแกรมบนอุปกรณ์เคลื่อนที่แบบพกพา
+                </p>
+            </div>
+        </div>
+    </section>
+    <br>
+    <div class="tile is-ancestor columns is-justify-content-center">
+        <div class="tile is-8 is-parent is-justify-content-space-around">
+            <article class="tile is-child box is-5 notification is-info">
+                <p class="title">Dropdown</p>
+                <p>กด Dropdown เพื่อดูรายชื่อ</p>
+                <form>
+                    <div class="select is-rounded">
+                        <select id="members" aria-label="User">
+                            <option value="" class="member">เลือกผู้ใช้</option>
+                            <% lists.forEach(function(user){ %>
+                            <option class="member" id="<%= user.id%>" value="<%= user.name %>"
+                                data-nickname="<%= user.nickname%>" data-number="<%= user.number %>"><%=
+                                    user.name %></option>
+                            <% }) %>
+                        </select>
+                    </div>
+                    <label class="checkbox">
+                        <input type="checkbox" id="123456789">
+                        ดูข้อมูลสมาชิก
+                    </label>
+                </form>
+            </article>
+
+            <article class="tile is-child is-6 box notification is-info is-hidden" id="aboutBox">
+                <p class="title">ข้อมูลสมาชิก</p>
+                <div id="about"></div>
+            </article>
+        </div>
+    </div>
+    <footer class="footer is-fixed-bottom-desktop">
+        <div class="has-text-centered">
+            <nav class="level">
+                <p class="level-item has-text-centered">
+                    <a href="https://https://bulma.io/" target="_blank">Bulma.io</a>
+                </p>
+            </nav>
+        </div>
+        <p class="has-text-centered is-small">Don't type <code>rickroll</code>!!</p>
+    </footer>
+    <script>
+        //alertify.set('notifier', 'position', 'top-center');
+
+        $("#members").change(function () {
+            var str = "";
+
+            if ($(this).val()) {
+                $(":selected").each(function () {
+                    str += $(this).val() + " ";
+                    //alertify.success("คุณได้เลือก " + str) + alertify.get('notifier', 'position');
+                    $("#about").html("ชื่อ: " + str + "<br>ชื่อเล่น: " + $(this).data("nickname") +
+                        "<br>เลขที่: " + $(this).data("number"));
+                });
+            } else {
+                $("#about").html("กรุณาเลือกผู้ใช้");
+            }
+        });
+        $(document).ready(function () {
+            $('input[type="checkbox"],[id="123456789"]').click(function () {
+                if ($(this).prop("checked") == true) {
+                    $("#aboutBox").removeClass("is-hidden");
+                } else if ($(this).prop("checked") == false) {
+                    $("#aboutBox").addClass("is-hidden");
+                }
+            });
+        });
+
+
+        var allowedKeys = {
+            82: 'r',
+            79: 'o',
+            67: 'c',
+            73: 'i',
+            75: 'k',
+            76: 'l'
+        };
+
+        var rickrollCode = ['r', 'i', 'c', 'k', 'r', 'o', 'l', 'l']; //rickroll
+        var rickrollPosition = 0;
+
+        document.addEventListener('keydown', function (e) {
+            var key = allowedKeys[e.keyCode];
+            var requiredKey = rickrollCode[rickrollPosition];
+
+            if (key == requiredKey) {
+                rickrollPosition++;
+
+                if (rickrollPosition == rickrollCode.length) {
+                    activateRickroll();
+                    rickrollPosition = 0;
+                }
+            } else {
+                rickrollPosition = 0;
+            }
+        });
+
+        function activateRickroll() {
+            window.open("https://www.youtube.com/watch?v=dQw4w9WgXcQ", "_blank");
+        }
+    </script>
+</body>
+
+</html>
