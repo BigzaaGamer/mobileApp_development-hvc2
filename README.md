@@ -52,6 +52,7 @@ Node.js เป็นหลัก
 * [ชิ้นงานที่ 5](/workshop5-chapter3)
 * [ชิ้นงานที่ 6](/workshop6)
 * [ชิ้นงานที่ 8](/workshop8)
+* [ชิ้นงานที่ 9](/workshop9)
 
 ---
 
