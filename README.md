@@ -25,7 +25,7 @@ Repo นี้มีไว้รวบรวมชิ้นงาน วิช�
 เป็นวิชาการพัฒนาแอพพลิเคชั่นบนอุปกรณ์พกพา โดยจะใช้ 
 Node.js เป็นหลัก  
 
-![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)![](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)![](https://img.shields.io/badge/Visual_Studio_Code-0078D4?style=for-the-badge&logo=visual%20studio%20code&logoColor=white)![](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
+![](https://img.shields.io/badge/JavaScript-323330?style=for-the-badge&logo=javascript&logoColor=F7DF1E)![](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)![](https://img.shields.io/badge/MongoDB-white?style=for-the-badge&logo=mongodb&logoColor=4EA94B)![](https://img.shields.io/badge/Express.js-000000?style=for-the-badge&logo=express&logoColor=white)
 
 ## เนื้อหาที่เรียน
 
@@ -40,6 +40,8 @@ Node.js เป็นหลัก
     * ส่งค่า Param หลายค่า
     * ผ่านค่า Param ไปกับ URL
 * ใช้ Module ที่มาพร้อมกับ Node.js (`http`)
+* ใช้ Template Engine (`EJS`)
+* การเข้ารหัสข้อมูลและการใช้ Token โดยใช้ `bcryptjs` และ `jsonwebtoken`
 
 ---
 
@@ -53,6 +55,7 @@ Node.js เป็นหลัก
 * [ชิ้นงานที่ 6](/workshop6)
 * [ชิ้นงานที่ 8](/workshop8)
 * [ชิ้นงานที่ 9](/workshop9)
+* [ชิ้นงานที่ 10](/workshop10)
 
 ---
 
