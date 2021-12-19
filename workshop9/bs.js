@@ -1,82 +1,69 @@
-$(document).ready(function(){
+$(document).ready(function() {
+	(function() {
+		if (!('requestAnimationFrame' in window)) return;
+		if (/Mobile|Android/.test(navigator.userAgent)) return;
 
-(function(){
+		var backgrounds = [];
 
-	if(!('requestAnimationFrame' in window)) return;
-	if(/Mobile|Android/.test(navigator.userAgent)) return;
+		$('[data-bs-parallax-bg]').each(function() {
+			var el = $(this);
+			var bg = $('<div>');
 
-	var backgrounds = [];
+			bg.css({
+				backgroundImage: el.css('background-image'),
+				backgroundSize: 'cover',
+				backgroundPosition: 'center',
+				position: 'absolute',
+				height: '200%',
+				width: '100%',
+				top: 0,
+				left: 0,
+				zIndex: -100
+			});
 
-	$('[data-bs-parallax-bg]').each(function(){
-		var el = $(this);
-		var bg = $('<div>');
+			bg.appendTo(el);
+			backgrounds.push(bg[0]);
 
-		bg.css({
-			backgroundImage: el.css('background-image'),
-			backgroundSize: 'cover',
-			backgroundPosition: 'center',
-			position: 'absolute',
-			height:'200%',
-			width:'100%',
-			top:0, left:0,
-			zIndex: -100
+			el.css({
+				position: 'relative',
+				background: 'transparent',
+				overflow: 'hidden',
+			});
 		});
 
-		bg.appendTo(el);
-		backgrounds.push(bg[0]);
+		if (!backgrounds.length) return;
 
-		el.css({
-			position:'relative',
-			background:'transparent',
-			overflow: 'hidden',
-		});
-	});
+		var visible = [];
+		var scheduled;
 
-	if(!backgrounds.length) return;
+		$(window).on('scroll resize', scroll);
 
-	var visible = [];
-	var scheduled;
+		scroll();
 
-	$(window).on('scroll resize', scroll);
-
-	scroll();
-
-	function scroll(){
-
-		visible.length = 0;
-
-		for(var i = 0; i < backgrounds.length; i++){
-			var rect = backgrounds[i].parentNode.getBoundingClientRect();
-
-			if(rect.bottom > 0 && rect.top < window.innerHeight){
-				visible.push({
-					rect: rect,
-					node: backgrounds[i]
-				});
+		function scroll() {
+			visible.length = 0;
+			for (var i = 0; i < backgrounds.length; i++) {
+				var rect = backgrounds[i].parentNode.getBoundingClientRect();
+				if (rect.bottom > 0 && rect.top < window.innerHeight) {
+					visible.push({
+						rect: rect,
+						node: backgrounds[i]
+					});
+				}
 			}
-
+			cancelAnimationFrame(scheduled);
+			if (visible.length) {
+				scheduled = requestAnimationFrame(update);
+			}
 		}
 
-		cancelAnimationFrame(scheduled);
-
-		if(visible.length){
-			scheduled = requestAnimationFrame(update);
+		function update() {
+			for (var i = 0; i < visible.length; i++) {
+				var rect = visible[i].rect;
+				var node = visible[i].node;
+				var quot = Math.max(rect.bottom, 0) / (window.innerHeight + rect.height);
+				node.style.transform = 'translate3d(0, ' + (-50 * quot) + '%, 0)';
+			}
 		}
-
-	}
-
-	function update(){
-
-		for(var i = 0; i < visible.length; i++){
-			var rect = visible[i].rect;
-			var node = visible[i].node;
-
-			var quot = Math.max(rect.bottom, 0) / (window.innerHeight + rect.height);
-
-			node.style.transform = 'translate3d(0, '+(-50*quot)+'%, 0)';
-		}
-
-	}
-
-})();
+	})();
 });
