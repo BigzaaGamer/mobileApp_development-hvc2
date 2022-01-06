@@ -4,3 +4,4 @@ package-lock.json
 *.txt
 notUsed
 workshop7-mongoDB
+.vscode
