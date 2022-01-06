@@ -1,0 +1,67 @@
+doctype html
+html(lang="th")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible" content="IE=edge")
+        meta(name="viewport" content="width=device-width, initial-scale=1.0")
+        link(rel="stylesheet" href="bulma/css/bulma.css")
+        link(rel="stylesheet" href="css/main.css")
+        title Workshop 12 - Chat Application
+        script(src="https://cdn.socket.io/4.4.0/socket.io.min.js", integrity="sha384-1fOn6VtTq3PWwfsOrk45LnYcGosJwzMHv+Xh/Jx5303FVOXzEnw0EpLv30mtjmlj", crossorigin="anonymous") 
+        script(src="https://code.jquery.com/jquery-3.6.0.min.js", integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=", crossorigin="anonymous")
+
+    body
+        section.hero.has-background-black-bis.is-small
+            div.hero-body
+                div.container
+                    h1.title Workshop 12 - งานชิ้นที่ 12
+                    h2.subtitle Chat Application - แอปพลิเคชั่นแชท
+                    p#subjectName 30204-2303 การพัฒนาโปรแกรมบนอุปกรณ์เคลื่อนที่แบบพกพา
+                
+            
+        section.container.mt-6.mb-6.is-flex.is-justify-content-center
+            div.box.p-0.has-background-black-bis#chatBox
+                div.content.is-flex.is-flex-direction-column.is-justify-content-space-between
+                    div.has-background-gray-darker#chatContainer
+                        div.chatData.p-2.has-background-black-bis
+                           
+                        
+                    div#inputBox
+                        form#msgForm
+                            div.field.has-addons
+                                //- div.control#controlName
+                                //-     input.input#name(type="text",placeholder="Your Name...",action)
+                                div.control#sD9gbn
+                                    input.input#msgInput(type="text",placeholder="Enter Your Message...",action)
+   
+                                div.control
+                                    button.button.is-info#sendMsg Send
+
+
+        footer.footer
+            div.container
+                div.content.has-text-centered
+                    p จัดทำโดย นาย กรกมล ศรีอ่อน
+                    p ดูบน a(href="http://github.com/BigzaaGamer") GitHub 
+        script.
+            const socket = io();
+            var name2 = prompt("กรุณาป้อนชื่อของคุณ: ")    
+            $('#msgForm').submit(function() {
+                if(name2 == null || name2 == ''){
+                    name2 = "Guest" + Math.floor(Math.random() * 10000)
+                }
+                const name = name2;
+                const message = $('#msgInput').val();
+                socket.emit('chatter', `${name}`, `${message}`);
+                $('#msgInput').val('');
+                return false; 
+            });
+
+            socket.on('chatter', function(name,message) {
+                $('#chatContainer').append($(`<div class="chatData p-1 has-background-black-bis">`).html(`<strong>${name}: </strong>${message}`));
+            });
+            socket.on("disconnect", () => {
+                console.log(socket.id);
+            });
+
+
