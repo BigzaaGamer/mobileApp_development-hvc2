@@ -40,8 +40,9 @@ Node.js เป็นหลัก
     * ส่งค่า Param หลายค่า
     * ผ่านค่า Param ไปกับ URL
 * ใช้ Module ที่มาพร้อมกับ Node.js (`http`)
-* ใช้ Template Engine (`EJS`)
+* ใช้ Template Engine (`EJS`, `Pug`)
 * การเข้ารหัสข้อมูลและการใช้ Token โดยใช้ `bcryptjs` และ `jsonwebtoken`
+* ใช้ `Socket.IO` ในกาสร้างแอปแชท
 
 ---
 
@@ -57,6 +58,7 @@ Node.js เป็นหลัก
 * [ชิ้นงานที่ 9](/workshop9)
 * [ชิ้นงานที่ 10](/workshop10)
 * [ชิ้นงานที่ 11](/workshop11)
+* [ชิ้นงานที่ 12](/workshop12)
 
 ---
 
